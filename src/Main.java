@@ -54,6 +54,9 @@ public class Main {
                                 System.out.println(cr.toString());
                             }
                         }
+                        else if(c==null){
+                            System.out.println("The student has not enrolled in any course ");
+                        }
                         System.out.println("The balance in the students account is " + objective.getTotalMoney());
 
                         if (objective.getTotalMoney() >= 800) {
@@ -79,7 +82,15 @@ public class Main {
                                 }
 
                                   String stringu=sc.nextLine();
-                                  Courses crs=Courses.valueOf(stringu);
+                                  Courses crs=null;
+                                  try {
+                                      crs=Courses.valueOf(stringu);
+                                  }
+                                  catch (IllegalArgumentException e){
+                                     System.out.println("Wrong Subject entered try again");
+                                     continue;
+                                  }
+
                                 System.out.println("Debugging "+crs);
                                 objective.addSubject(crs);
                               System.out.println("Now the student has ");
